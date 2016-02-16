@@ -1,0 +1,125 @@
+\documentclass [letterpaper]{article}
+
+\usepackage {amssymb}
+\usepackage {latexsym}
+\usepackage [usenames,dvipsnames]{color}
+\usepackage {verbatim}
+\usepackage {hyperref}
+\usepackage {cite}
+
+\author{Michael Deakin}
+\title{Hyperspheres and Hypervolumes}
+\date{April, 2012}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+This paper explores methods of calculating the content of an N-sphere.  A simple method of derivation of the content is proposed. With this method, the volume of an 8 dimensional hypersphere is calculated. Finally, the trend of the content with respect to number of dimensions is analyzed.
+\end{abstract}
+%\tableofcontents
+%\listoffigures
+\section{Introduction}
+Hyperspheres don't have a volume in the traditional sense. That is not to say that they are not closed shapes, simply that their "volumes" are not of dimension 3. There volumes instead are of dimension $N$, and more pedantically known as hypervolumes, or content. How would one calculate the content of a hypersphere? The obvious approach, if somewhat inefficient, is to take $N$ integrals with variable bounds. This can become tedious, and as such a simpler solution is sought.
+\section{Definitions}
+A hypersphere $S$ is defined as the set of all points an equidistance away from a single point, $O$. More formally, $S\equiv \{P : \|P-O\|=R\}$. In this definition, $R$ is the radius of the hypersphere. This can be reduced to Figure \ref{fig:eq1}.
+\begin{figure}[h]
+\centering{$R^2=x_i^2$}
+~\cite{mathworld}
+\caption{\label{fig:eq1}N-sphere of radius R}
+\end{figure}
+The content of a hypersphere is calculable with the integral over the hypersphere. As there are hyperspheres, there are also hyperspherical coordinate systems. \ref{ss:proof_hsc} derives their construction. An intuitive method of this construction can be seen as an extension of the polar and spherical coordinate systems. Using this system makes calculation of the content of a hypersphere almost trivial, as shown by \ref{ss:proof_int}.
+\section{Derivations}
+Using figure \ref{fig:eqdvsimple}, we can construct the content integration over an N-sphere simply as $\int_TdV_N=\int\limits_{0}^R\int\limits_0^\pi\int\limits_0^\pi\dots\int\limits_0^\pi r^N\,dr\,\sin^{N-1}\theta_1\,d\theta_1\,\sin^{N-2}\theta_2\,d\theta_2\dots\sin\theta_{N-1}\,d\theta_{N-1}\,d\theta_N$. If we realize that this is an integration of the surface area of the N-sphere with respect to its radius, we can rewrite it in the following fashion $\int_TdV_N=\int\limits_0^RS_N\,dr$, or in a more applicable form, $dV_N=dS_N\,dr$. Thus, if we find a method of determining the surface area of the N-sphere, the content follows directly. Since we constructed the hyperspherical coordinate system with a rotation for each dimension, it is simple to add more. Given figure \ref{fig:eqdvsimple}, and taking advantage of the arbitrary definition of our angles, we can end up with figure \ref{fig:eqdvreq}\footnote{This is admittedly playing loosely with the definitions of our variables. What truly happens is for the purposes of our calculations equivalent, however.}
+.\\
+\begin{figure}[h]
+\centering{$dV_N=r^N\,dr\sin^{N-1}\theta_1\,d\theta_1\,\sin^{N-2}\theta_2\,d\theta_2\dots\sin\theta_{N-1}\,d\theta_{N-1}\,d\theta_N$}\\
+\centering{$dS_N=r^N\,\sin^{N-1}\theta_1\,d\theta_1\,\sin^{N-2}\theta_2\,d\theta_2\dots\sin\theta_{N-1}\,d\theta_{N-1}\,d\theta_N$}\\
+\caption{\label{fig:eqdvsimple}Simplified Differential Volume Element of an N-Sphere}
+\end{figure}\\
+\begin{figure}[h]
+\centering{$dV_{N+1}=r^{N+1}\,dr\sin^N\theta_0\,d\theta_0\,\sin^{N-1}\theta_1\,d\theta_1\dots\sin\theta_{N-1}\,d\theta_{N-1}\,d\theta_N$}\\
+\centering{$dV_{N+1}=r\,sin^N\theta_0\,d\theta_0\,dV_N$}\\
+\centering{$dV_1=2dr$}\\
+\caption{\label{fig:eqdvreq}Recursive Differential Volume Element of an N-Sphere}
+\end{figure}\\
+Similarly, we have the figure \ref{fig:eqdsreq} for calculating the differential surface area of an N-Sphere.\\
+\begin{figure}[h]
+\centering{$dS_{N+1}=r^{N+1}\sin^N\theta_0\,d\theta_0\,\sin^{N-1}\theta_1\,d\theta_1\dots\sin\theta_{N-1}\,d\theta_{N-1}\,d\theta_N$}\\
+\centering{$dS_{N+1}=r\,sin^N\theta_0\,d\theta_0\,dS_N$}\\
+\centering{$dS_1=2$}
+\caption{\label{fig:eqdsreq}Recursive Differential Surface Area Element of an N-Sphere}
+\end{figure}\\
+Thus, $V_N=\int\limits_{0}^RS_{N}\,dr$\\ where $S_N=\int\limits_{S_N}dS_N=r\,S_{N-1}\int\limits_0^\pi\sin^{N-1}\theta_N\,d\theta_N$\newpage
+\section{Calculations}
+The content of an 8-Sphere is calculated below. This is preceded by the calculation of the surface area of an 8-Sphere. The steps for integrating $\sin^N\theta\,d\theta$ are shown in \ref{ss:sines}\\\\
+\begin{tabular}{|l|l|l|}
+\hline
+N & Surface Area & Content \\\hline
+1 & $S_1=2$ & $V_1=2R$\\\hline
+2 & $S_2=r\,S_0\int\limits_0^\pi \sin^0 \theta_1\,d\theta_1 = 2\pi r$ & $V_2=\pi R^2$ \\\hline
+3 & $S_3=r\,S_1\int\limits_0^\pi \sin^1\theta_2\,d\theta_2=4\pi r^2$ & $V_3=\frac{4}{3}\pi R^3$\\\hline
+4 & $S_4=r\,S_2\int\limits_0^\pi \sin^2\theta_3\,d\theta_3=2\pi^2 r^3$ & $V_4=\frac{\pi^2}{2}R^4$\\\hline
+5 & $S_5=r\,S_3\int\limits_0^\pi \sin^3\theta_4\,d\theta_4=\frac{8}{3}\pi^2 r^4$ & $V_5=\frac{8}{15}\pi^2R^5$ \\\hline
+6 & $S_6=r\,S_4\int\limits_0^\pi \sin^4\theta_5\,d\theta_5=\pi^3 r^5$ & $V_6=\frac{\pi^3}{6}R^6$ \\\hline
+7 & $S_7=r\,S_5\int\limits_0^\pi \sin^5\theta_6\,d\theta_6=\frac{16}{15}\pi^3 r^6$ & $V_7=\frac{16}{105}\pi^3R^7$\\\hline
+8 & $S_8=r\,S_6\int\limits_0^\pi \sin^6\theta_7\,d\theta_7=\frac{\pi^4}{3}r^7$ & $V_8=\frac{\pi^4}{24}R^8$\\\hline
+\end{tabular}\\
+Since $V_N=\int\limits_0^RS_Ndr$, $S_N$ is always of the form $C_Nr^{N-1}$, and $N\in\mathbb{N}$, $V_N=\int\limits_0^RC_Nr^{N-1}dr=\frac{C_N}{N}R^N$.\\
+For example, $S_4=2\pi^2 r^3$, so $V_N=\int\limits_0^R2\pi^2 r^3dr=2\pi^2\frac{1}{4}(R^4-0^4)=\frac{\pi^2}{2}R^4$
+\section{Comparisons}
+A somewhat interesting question to ask is what happens to the content as N changes. Of particular interest is the dimension of maximum content for a given radius. Using the following, $V_N=V_{N-1}\frac{N-1}{N}R\int\limits_0^\pi\sin^N\theta\,d\theta$, we can find the factor that the content changes by when N increases to be $\frac{N-1}{N}R\int\limits_0^\pi\sin^N\theta\,d\theta$. Since this is a factor, the dimension of the maximum content will immediately precede the dimension where the factor is less than 1. This assumes that the factor will never rise above 1 in higher dimensions. Fortunately, it can be shown that this is true. For $\int\limits_0^\pi\sin^N\theta\,d\theta$ can be seen to always decrease with N because for $0\le\theta\le\pi$ $\sin\theta\in[0, 1]$. $\frac{N-1}{N}$ is less than 1 by default, although it approaches 1 as N increases. However, for large N, $\int\limits_0^\pi\sin^N\theta\,d\theta$ decreases at a greater rate than $\frac{N-1}{N}$ increases. Because of this, the factor monotonically decreases after N=5. Once $\int\limits_0^\pi\sin^N\theta\,d\theta\le\frac{1}{R}$, the content will only decrease as the dimension increases.
+For a unit sphere, the  maximum content will occur when $N=5$.
+\renewcommand{\thesection}{A}
+\section{Appendix}
+\subsection{\label{ss:proof_hsc}Derivation of the hyperspherical coordinate system}
+The idea of a hyperspherical coordinate system is highly useful in deriving the volume of the hypersphere. The visualisation of the system uses the idea of the spherical coordinate system, where an angle between the z-axis and the projection of the vector into the xyz hyperplane. Only in this case, we will be adding angles between the $x_k$ axis and the projection of the vector into the $x_kx_{k+1}x_{k+2}...x_N$ hyperplane.\\
+Let there be a coordinate $X$ such that $X\in \mathbb{R}^N$, composed of elements $x_1, x_2, \dots, x_N$.\\
+The distance from the origin to $X$ is calculable with the following, through repeated application of the Pythagorean Theorem.\\
+$R^2=x_1^2+x_2^2+\dots+x_N^2$\\
+We can define the angle, $\theta_1$ as the angle between $X$ and the vector $d_1$ where $d_1=[1, 0, 0, \dots, 0]^T$ and $d_1\in \mathbb{R}^N$.\\
+$\theta_1=\arccos\frac{x_1}{R}$\\
+$\theta_1$ exists for all values of $x_1\le R$. Since $x_1^2=R^2-x_2^2-x_3^2-\dots-x_N^2$, and $R^2-x_2^2-x_3^2-\dots-x_N^2\le R^2$, $x_1\le R$ and $\theta_1$ always exists.\\
+With this definition, we have $R^2=R^2\cos^2 \theta_1 +x_2^2+x_3^2+\dots+x_N^2$. Therefore, $R^2(1-\cos^2 \theta_1)=R^2\sin^2(\theta_1)=x_2^2+x_3^2+\dots+x_N^2$.\\
+In a similar manner we can also define $\theta_2$.\\
+$\theta_2=\arccos \frac{x_2}{R\sin\theta_1}$\\
+$\theta_2$ exists for all values of $x_2 \le R\sin \theta_1$. Since $x_2^2=R^2\sin^2\theta_1-x_3^2-x_4^2-\dots-x_N^2\le R^2\sin^2\theta_1$, $\theta_2$ always exists.\\
+Finally, we may define $\theta_k$, $k < N$ and $k - 1\in \mathbb{Z}$.\\
+$\theta_k=\arccos\frac{x_k}{R \prod\limits_{i=1}^{k-1}\sin\theta_i}$\\
+$\forall X\in \mathbb{R}^N, \exists\theta_k\in\mathbb{R}$\\
+This is because of\\$R^2=x_1^2+x_2^2+\dots+x_k^2+\dots+x_N^2=R^2\cos^2\theta_1+R^2\cos^2\theta_2\sin^2\theta_1+\dots+R^2\cos^2\theta_{k-1}\prod\limits_{i=1}^{k-2}\sin^2\theta_i+x_k^2+\dots+x_N^2$\\
+which implies\\$x_k^2=R^2\prod\limits_{i=1}^{k-1}\sin^2\theta_i-x_{k+1}^2-x_{k+2}^2-\dots-x_N^2\le R^2\prod\limits_{i=1}^{k-1}sin^2\theta_i$\\
+With these definitions, we have a well defined hyperspherical coordinate system which can be converted to and from hyperrectangular coordinates. For example, the point $P(5,6,3,9)$, defined in rectangular coordinates, can be converted as follows.\\
+$R=\sqrt{5^2+6^2+3^2+9^2}=\sqrt{151}$\\
+$\theta_1=\arccos\frac{5}{\sqrt{151}}\approx 1.1517$\\
+$\theta_2=\arccos\frac{6}{\sqrt{151}\sin 1.1517}\approx 1.0069$\\
+$\theta_3=\arccos\frac{3}{\sqrt{151}\sin 1.1517\,\sin 1.0069}\approx 1.2490$\\
+\subsection{\label{ss:proof_int}Integration in hyperspherical coordinates}
+A differential volume in hyperspherical coordinates is nothing more than an expansion of the ideas in polar and spherical coordinates. The differential volume of a sphere is given by a rotation of a differential content of a circle, which is nothing more than the rotation of a differential content of a line. Following this pattern, the differential volume of a 4-sphere is simply a rotation of the differential volume of a 3-sphere. This process can be continued ad infinitum, allowing us to calculate the differential volume of an N-sphere as shown in figure \ref{fig:eqdv}.\\
+\begin{figure}[h]
+\centering{$dV_N=dr\,r\,d\theta_1\,r\sin\theta_1\,d\theta_2\,r\sin\theta_1\sin\theta_2\,d\theta_3\,\dots\,r\prod\limits_{i=1}^{N-1}sin\theta_i\,d\theta_N$}
+\caption{\label{fig:eqdv}Differential Volume Element of an N-Sphere}
+\end{figure}\\
+This equation is not in a simplified form, however. Simplifying and rearranging gives us Figure \ref{fig:eqdvsimple}, a much more useful equation. This equation gives a simple method of integration over a N-sphere.
+\subsection{\label{ss:sines}Integrals of sines}
+$\int\limits_0^\pi\sin^0\theta\,d\theta=\pi$\\
+$\int\limits_0^\pi\sin^1\theta\,d\theta=-\cos\pi+\cos 0=2$\\
+$\int\limits_0^\pi\sin^2\theta\,d\theta=\int\limits_0^\pi\frac{1-\cos 2\theta}{2}d\theta=\frac{1}{2}\pi$\\
+$\int\limits_0^\pi\sin^3\theta\,d\theta=\int\limits_0^\pi\sin\theta(1-cos^2\theta)d\theta=2+\frac{1}{3}(\cos^3\pi-\cos^30)=\frac{4}{3}$\\
+$\int\limits_0^\pi\sin^4\theta\,d\theta=\int\limits_0^\pi\frac{(1-\cos2\theta)(1-\cos2\theta)}{4}d\theta=\frac{1}{4}\int\limits_0^\pi\cos^22\theta-2\cos2\theta+1\,d\theta=\frac{\pi}{4}+\frac{1}{4}\int\limits_0^\frac{\pi}{2}cos^2u\,du$\\
+$=\frac{\pi}{4}+\frac{1}{4}\int\limits_0^\pi\frac{1+\cos2\theta}{2}d\theta=\frac{3}{8}\pi$\\
+$\int\limits_0^\pi\sin^5\theta\,d\theta=\frac{1}{4}\int\limits_0^\pi\sin\theta(1-\cos2\theta)^2d\theta=\frac{1}{4}\int\limits_0^\pi\sin\theta-2\sin\theta\cos2\theta+\cos^2\theta\sin\theta\,d\theta$\\
+$=\frac{1}{2}+\frac{1}{4}\int\limits_0^\pi\sin\theta-\sin3\theta+\frac{1}{2}\sin\theta+\frac{1}{2}\sin\theta\cos4\theta\,d\theta$\\
+$=\frac{1}{2}+\frac{1}{2}-\frac{1}{6}+\frac{1}{4}+\frac{1}{16}\int\limits_0^\pi\sin5\theta-\sin3\theta\,d\theta=\frac{26}{24}+\frac{1}{40}-\frac{1}{24}=\frac{16}{15}$\\
+$\int\limits_0^\pi\sin^6\theta\,d\theta=\frac{1}{8}\int\limits_0^\pi(1-cos2\theta)^3d\theta=\frac{1}{8}\int\limits_0^\pi1-3\cos2\theta+3\cos^22\theta-cos^32\theta\,d\theta$\\
+$=\frac{\pi}{8}+\frac{1}{16}\int\limits_0^\pi3+3\cos4\theta-\cos2\theta-\cos2\theta\cos4\theta\,d\theta$\\
+$=\frac{5}{16}\pi-\frac{1}{16}\int\limits_0^\pi\cos2\theta+\cos6\theta\,d\theta=\frac{5}{16}\pi$\\
+$\int\limits_0^\pi\sin^7\theta\,d\theta=\frac{1}{8}\int\limits_0^\pi\sin\theta-3\sin\theta\cos2\theta+3\sin\theta\cos^22\theta-\sin\theta\cos^32\theta\,d\theta$\\
+$=\frac{1}{4}+\frac{3}{8}-\frac{1}{8}+\frac{1}{16}-\frac{1}{48}+\frac{3}{8}+\frac{1}{16}\int\limits_0^\pi3\sin\theta\cos4\theta+\frac{1}{2}(\sin\theta-\sin3\theta)\cos4\theta\,d\theta$\\
+$=\frac{11}{12}+\frac{1}{32}\int\limits_0^\pi3\sin5\theta-3\sin3\theta+\frac{1}{2}(\sin5\theta-\sin3\theta-\sin7\theta+\sin\theta)d\theta=\frac{32}{35}$
+\subsection{Formulas}
+$\sin^2(\theta)=\frac{1-cos(2\theta)}{2}$\\
+$\sin(\alpha)\cos(\beta) = \frac{sin(\alpha - \beta) + sin(\alpha + \beta)}{2}$\\
+$\cos(\alpha)\cos(\beta) = \frac{\cos(\alpha+\beta)+\cos(\alpha-\beta)}{2}$ ~\cite{calcbk}\\
+\bibliography{hyper}{}
+\bibliographystyle{plain}
+\end{document}
